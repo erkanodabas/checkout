@@ -26,8 +26,24 @@ console.log(quantityControllerDivs);
         }
     });
     //plusbutton
-    quantityControllerDiv.lastElementChild.addEventListener("click", ()=>{
+    quantityControllerDiv.lastElementChild.addEventListener("click", (event)=>{
         quantityP.innerText = parseInt(quantityP.innerText) +1;
-
+    calculateProductTotal(quantityP);
     });
 });
+
+const calculateProductTotal = (quantityP) => {
+    let productInfoDiv = quantityP.parentElement.parentElement;
+    const productPrice = parseFloat(productInfoDiv.querySelector("strong").innerText);
+    console.log(productPrice);
+    console.log(quantityP.innerText);
+    let productTotalPrice = productPrice * parseInt(quantityP.innerText);
+    console.log(productTotalPrice);
+    let productTotalDiv = productInfoDiv.querySelector("product-line-price");
+    productTotalDiv.innerText = productTotalPrice.toFixed(2);
+    calculateCartTotal();
+}
+
+const calculateCartTotal = () => {
+    
+}
