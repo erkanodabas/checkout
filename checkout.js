@@ -14,11 +14,20 @@ console.log(quantityControllerDivs);
 
 [...quantityControllerDivs].forEach((quantityControllerDiv)=>{
     //minus button
+    let quantityP = quantityControllerDiv.querySelector("#product-quantity");
     quantityControllerDiv.firstElementChild.addEventListener("click", ()=>{
-        let quantityP = quantityControllerDiv.querySelector("#product-quantity");
+        // if(quantityP.innerText != "1"){
+        // quantityP.innerText = parseInt(quantityP.innerText) -1;
+        // }
         quantityP.innerText = parseInt(quantityP.innerText) -1;
+        if(quantityP.innerText == "0"){
+            alert("product will be removed!");
+            quantityControllerDiv.parentElement.parentElement.remove();
+        }
     });
     //plusbutton
     quantityControllerDiv.lastElementChild.addEventListener("click", ()=>{
+        quantityP.innerText = parseInt(quantityP.innerText) +1;
+
     });
 });
